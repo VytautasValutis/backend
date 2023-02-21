@@ -5,7 +5,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Bebras />
+        <Bebras color="yellow" name="Alfa"/>
+        <Bebras color="cyan"  name="Beta"/>
       </header>
     </div>
   );
