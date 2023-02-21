@@ -49,7 +49,6 @@
       color: coral;
     }
   }
-
   li {
     color: skyblue;
     background-color: darkgreen;
@@ -57,5 +56,8 @@
     &.big {
       letter-spacing: 7px;
     }
+  }
+  label {
+    color: rgb(254, 147, 6);
   }
 }
