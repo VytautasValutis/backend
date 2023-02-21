@@ -4,20 +4,26 @@ import './App.scss';
 import rand from './Functions/rand.js';
 
 
-const africa = ['Zebras', 'Liūtas', '', 'Raganosis', '', 'Raganosis', 'Begemotas'];
+const africa = ['Zebras', 'Liūtas',  '', 'Raganosis', '','Raganosis', 'Begemotas'];
 const australia = ['Kengūra', 'Ančiasnapis', 'Dingo', 'Atsirado', 'Strutis'];
 let numbs = [];
 
 function App() {
 
+  const [sum, setSum] = useState(0);
+
+  const clickIt = () => {
+    numbs.push(rand(1, 10));
+    console.log(numbs);
+    setSum(numbs.reduce((b, a) => b += a, 0))
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <ul className="list-group list-group-flush">
-          {
-            africa.map((a, i) => a !== '' ? <li key={i}> {a} </li> : '')
-          }
-        </ul>
+      <h3>Suma {sum}</h3>
+      <button type="button" className="btn btn-outline-warning mt-4"  onClick={clickIt}>CLICK</button>
       </header>
     </div>
   );
