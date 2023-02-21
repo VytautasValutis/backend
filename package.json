@@ -1,0 +1,28 @@
+{
+  "name": "stage-2",
+  "version": "1.0.0",
+  "description": "Hello ciupakabros",
+  "main": "index.js",
+  "scripts": {
+    "tst": "nodemon ./Homework/tst.js",
+    "HomeW": "nodemon ./Homework/003-Hw.js",
+    "app": "nodemon ./002/app.js",
+    "dev": "dead-server --host=localhost --port=1999 -q",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VytautasValutis/Stage-2.git"
+  },
+  "keywords": [],
+  "author": "Vytautas Valutis (http://github.com/VytautasValutis)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VytautasValutis/Stage-2/issues"
+  },
+  "homepage": "https://github.com/VytautasValutis/Stage-2#readme",
+  "devDependencies": {
+    "dead-server": "^1.0.9",
+    "nodemon": "^2.0.20"
+  }
+}
