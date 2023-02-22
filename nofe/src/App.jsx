@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.scss';
 import randColor from './Functions/randColor';
+import { v4 as uuidv4 } from 'uuid';
 
 
 // const animals = [
@@ -30,13 +31,24 @@ function App() {
   const doWish = e => {
     setWish(e.target.value);
   }
-  
+
   const doWishSize = e => {
     setSize(e.target.value);
   }
 
   const addWish = () => {
-    setWishList(w => [...w, {wish, size, color: randColor()}]);
+    setWishList(w => [...w, {
+      id:uuidv4(),
+      wish,
+      size,
+      color: randColor()
+    }
+    ]);
+    setWish('');
+    setSize(0);
+  }
+  const del = id => {
+    setWishList(w => w.filter(w => id !== w.id));
   }
 
   return (
@@ -55,11 +67,12 @@ function App() {
               </li>)
             } */}
             {
-              wishList.map((a, i) => 
-              <li key={i} className={'list-group-item'}
-                style={{ color: a.color }}>
-                {a.wish} <b>{a.size}</b>
-              </li>)
+              wishList.map((a, i) =>
+                <li key={i} className={'list-group-item'}
+                  style={{ color: a.color }}>
+                  {a.wish} <b>{a.size}</b>
+                  <div className='del-button'onClick={() => del(a.id)}></div>
+                </li>)
             }
           </ul>
           <div className="m-3">

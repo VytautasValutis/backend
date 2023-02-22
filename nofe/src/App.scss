@@ -22,6 +22,7 @@
     }
   }
   li {
+    position: relative;
     color: skyblue;
     background-color: #fff;
 
@@ -31,5 +32,22 @@
   }
   label {
     color: rgb(254, 147, 6);
+  }
+}
+
+.del-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  &::after {
+    content: "\2620";
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
   }
 }
