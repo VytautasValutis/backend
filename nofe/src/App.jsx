@@ -1,35 +1,55 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.scss';
-import Gone10 from './Components/005/Gone10';
 
+
+const africa = ['Zebras', 'Liūtas', '', 'Raganosis', '', 'Raganosis', 'Begemotas'];
+const australia = ['Kengūra', 'Ančiasnapis', 'Dingo', 'Atsirado', 'Strutis'];
+let numbs = [];
 
 function App() {
+  console.clear();
 
-  const [count, setCount] = useState(15);
-  const [stars, setStars] = useState('');
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
+  const [rez, setRez] = useState(0);
 
-  console.log('App');
+  const doNum1 = e => {
+    setNum1(e.target.value);
+  }
+  const doNum2 = e => {
+    setNum2(e.target.value);
+  }
 
-  useEffect(() => {
-    console.log('App born');
-  }, []);
-
-  useEffect(() => {
-    console.log('count changed');
-    setStars(''.padStart(count, '*'));
-  }, [count]);
+  const add = () => {
+    setRez(+num1 + +num2);
+  }
+  const sub = () => {
+    setRez(+num1 - +num2);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        {
-          count < 11 ? <Gone10 /> : null
-        }
-        <h1>{count}</h1>
-        <h3>{stars}</h3>
-        <button type="button" className="btn btn-outline-danger m-4" onClick={() => setCount(c => c + 1)}>add</button>
-        <button type="button" className="btn btn-outline-danger m-4" onClick={() => setCount(c => c - 1)}>rem</button>
+        <h5>{rez}</h5>
+        <div className="container">
+          <div className="row">
+            <div className="col-2 left">
+              <input type="text" className="form-control" onChange={doNum1} value={num1} />
+            </div>
+            <div className="col-2">
+              <input type="text" className="form-control" onChange={doNum2} value={num2} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-2 left">
+              <button type="button" className="btn btn-outline-success mt-4" onClick={add}>ADD</button>
+            </div>
+            <div className="col-2">
+              <button type="button" className="btn btn-outline-danger mt-4" onClick={sub}>SUB</button>
+            </div>
+          </div>
+        </div>
       </header>
     </div>
   );
