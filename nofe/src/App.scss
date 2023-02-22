@@ -48,24 +48,29 @@
     width: 200px;
   }
 }
-.row {
-  .left {
-    margin-left: 20rem;
-  }
+.desk {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .balls {
   display: block;
   width: 40px;
   height: 40px;
+  border: 1px solid #fff;
   border-radius: 50%;
   flex-direction: row;
 }
 
 .ball-block {
-  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 300px;
+  border: 1px solid #fff;
   display: flex;
   justify-content: center;
   gap: 20px;
-  width: 100%;
+  width: 45%;
 }
