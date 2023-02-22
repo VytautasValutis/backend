@@ -53,3 +53,19 @@
     margin-left: 20rem;
   }
 }
+
+.balls {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-direction: row;
+}
+
+.ball-block {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
