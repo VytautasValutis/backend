@@ -38,58 +38,59 @@ function App() {
 
   const addWish = () => {
     setWishList(w => [...w, {
-      id:uuidv4(),
+      id: uuidv4(),
       wish,
       size,
-      color: randColor()
-    }
-    ]);
-    setWish('');
-    setSize(0);
-  }
-  const del = id => {
-    setWishList(w => w.filter(w => id !== w.id));
-  }
+      color: randColor(),
+    }]);
+  console.log(wishList, wish, size);
+  setWish('');
+  setSize(0);
+}
 
-  return (
-    <div className="App">
-      <header className="App-header">
+const del = id => {
+  setWishList(w => w.filter(w => id !== w.id));
+}
 
-        <div className="card">
-          <div className="card-header">
-            <h2>Wish book</h2>
-          </div>
-          <ul className="list-group list-group-flush">
-            {/* {
+return (
+  <div className="App">
+    <header className="App-header">
+
+      <div className="card">
+        <div className="card-header">
+          <h2>Wish book</h2>
+        </div>
+        <ul className="list-group list-group-flush">
+          {/* {
               animals.map((a, i) => <li key={i} className={'list-group-item' + (a.big ? ' big' : '')}
                 style={{ color: a.color }}>
                 {a.name}
               </li>)
             } */}
-            {
-              wishList.map((a, i) =>
-                <li key={i} className={'list-group-item'}
-                  style={{ color: a.color }}>
-                  {a.wish} <b>{a.size}</b>
-                  <div className='del-button'onClick={() => del(a.id)}></div>
-                </li>)
-            }
-          </ul>
-          <div className="m-3">
-            <label className="form-label">Enter Your wish</label>
-            <input type="text" className="form-control" onChange={doWish} value={wish} />
-          </div>
-          <div className="m-3">
-            <label className="form-label">How big {size}</label>
-            <input type="range" className="form-control" min="0" max="10" onChange={doWishSize} value={size} />
-          </div>
-          <button type="button" className="btn btn-outline-danger m-4" onClick={addWish}>add</button>
+          {
+            wishList.map((a, i) =>
+              <li key={i} className={'list-group-item'}
+                style={{ color: a.color }}>
+                {a.wish} <b>{a.size}</b>
+                <div className='del-button' onClick={() => del(a.id)}></div>
+              </li>)
+          }
+        </ul>
+        <div className="m-3">
+          <label className="form-label">Enter Your wish</label>
+          <input type="text" className="form-control" onChange={doWish} value={wish} />
         </div>
-        {/* <button type="button" className="btn btn-outline-warning mt-4" onClick={clickIt}>CLICK</button> */}
-        {/* <button type="button" className="btn btn-outline-danger mt-4" onClick={add1}>+ 1</button> */}
-      </header>
-    </div>
-  );
+        <div className="m-3">
+          <label className="form-label">How big {size}</label>
+          <input type="range" className="form-control" min="0" max="10" onChange={doWishSize} value={size} />
+        </div>
+        <button type="button" className="btn btn-outline-danger m-4" onClick={addWish}>add</button>
+      </div>
+      {/* <button type="button" className="btn btn-outline-warning mt-4" onClick={clickIt}>CLICK</button> */}
+      {/* <button type="button" className="btn btn-outline-danger mt-4" onClick={add1}>+ 1</button> */}
+    </header>
+  </div>
+);
 }
 
 export default App;

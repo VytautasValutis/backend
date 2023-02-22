@@ -4,7 +4,7 @@ import './App.scss';
 import { v4 as uuidv4 } from 'uuid';
 import rand from './Functions/rand';
 
-const numbs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+const numbs = [{id: uuidv4(), num:1}];
 
 function App() {
   // console.clear();
@@ -13,11 +13,16 @@ function App() {
   const [rBalls, setRBalls] = useState([]);
   const [count, setCount] = useState(0);
 
+  // const reset = () => {
+  //   setLBalls(_ => numbs.slice(0, rand(5, 15)));
+  // }
   const reset = () => {
-    setLBalls(_ => numbs.slice(0, rand(5, 15)).map((a, i) =>
-      a = {id:uuidv4(),
-      num: i+1}
-    ));
+    setCount(c => c + 1);
+    setLBalls(b => [...b, {
+      id:uuidv4(),
+      num: count
+    }
+    ]);
   }
 
 
@@ -28,7 +33,7 @@ function App() {
         <div className="desk">
           <div className="ball-block">
           {
-            lBalls.map((a, i) => <div key={i} className="balls">{a.num}</div>)
+            lBalls.map((a, i) => <div key={i} className="balls">{a}</div>)
           }
           </div>
           <div className="ball-block">
