@@ -1,51 +1,32 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
-import { v4 as uuidv4 } from 'uuid';
-import rand from './Functions/rand';
+import Create from './Components/006/Create';
+import { create } from './Functions/localStorage';
 
-const numbs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+const KEY = 'whishList';
 
 function App() {
-  // console.clear();
 
-  const [lBalls, setLBalls] = useState([]);
-  const [rBalls, setRBalls] = useState([]);
+  const [createData, setCreateData] = useState(null);
 
-  const reset = () => {
-    setRBalls(_ => []);
-    setLBalls(_ => numbs.slice(0, rand(5, 15)).map((a, i) =>
-      a = {id:uuidv4(),
-      num: i+1}
-    ));
-  }
-  const moveR = (id, num) => {
-    setRBalls(b => [...b, {id, num}].sort((a, b) => +a.num - +b.num));
-    setLBalls(b => b.filter(b => id !== b.id));
-  }
-  const moveL = (id, num) => {
-    setLBalls(b => [...b, {id, num}].sort((a, b) => +a.num - +b.num));
-    setRBalls(b => b.filter(b => id !== b.id));
-  }
+  useEffect(() => {
+    if(null === createData) { return;}
+    create(KEY, createData);
+  }, [createData])
+
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <button type="button" className="btn btn-outline-danger" onClick={reset}>RESET</button>
-        <div className="desk">
-          <div className="ball-block">
-          {
-            lBalls.map((a, i) => <div key={i} className="balls" onClick={() => moveR(a.id, a.num)}>{a.num}</div>)
-          }
-          </div>
-          <div className="ball-block">
-            {
-          rBalls.map((a, i) => <div key={i} className="balls" onClick={() => moveL(a.id, a.num)}>{a.num}</div>)
-            }
-          </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-4">
+          <Create />
         </div>
-      </header>
-    </div>
+        <div className="col-8">
+          Column
+        </div>
+      </div>
+    </div >
   );
 }
 

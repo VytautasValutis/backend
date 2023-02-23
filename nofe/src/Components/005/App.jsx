@@ -43,7 +43,6 @@ function App() {
       size,
       color: randColor(),
     }]);
-  console.log(wishList, wish, size);
   setWish('');
   setSize(0);
 }
