@@ -11,15 +11,22 @@ function App() {
 
   const [lBalls, setLBalls] = useState([]);
   const [rBalls, setRBalls] = useState([]);
-  const [count, setCount] = useState(0);
 
   const reset = () => {
+    setRBalls(_ => []);
     setLBalls(_ => numbs.slice(0, rand(5, 15)).map((a, i) =>
       a = {id:uuidv4(),
       num: i+1}
     ));
   }
-
+  const moveR = (id, num) => {
+    setRBalls(b => [...b, {id, num}].sort((a, b) => +a.num - +b.num));
+    setLBalls(b => b.filter(b => id !== b.id));
+  }
+  const moveL = (id, num) => {
+    setLBalls(b => [...b, {id, num}].sort((a, b) => +a.num - +b.num));
+    setRBalls(b => b.filter(b => id !== b.id));
+  }
 
   return (
     <div className="App">
@@ -28,11 +35,12 @@ function App() {
         <div className="desk">
           <div className="ball-block">
           {
-            lBalls.map((a, i) => <div key={i} className="balls">{a.num}</div>)
+            lBalls.map((a, i) => <div key={i} className="balls" onClick={() => moveR(a.id, a.num)}>{a.num}</div>)
           }
           </div>
           <div className="ball-block">
             {
+          rBalls.map((a, i) => <div key={i} className="balls" onClick={() => moveL(a.id, a.num)}>{a.num}</div>)
             }
           </div>
         </div>
