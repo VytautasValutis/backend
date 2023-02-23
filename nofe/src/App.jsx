@@ -20,7 +20,7 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <Create />
+          <Create setCreateData={setCreateData}/>
         </div>
         <div className="col-8">
           Column
