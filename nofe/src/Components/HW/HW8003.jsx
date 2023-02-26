@@ -9,7 +9,7 @@ function HW8003({ }) {
             <header className="App-header">
                 <div className="desk">
                         {
-                            dogs.map((a, i) => <div className="elementas" style={{borderRadius: (i % 2) === 0 ? 0 : 100}}> {a}
+                            dogs.map((a, i) => <div key={i} className="elementas" style={{borderRadius: (i % 2) === 0 ? 0 : 100}}> {a}
                             <div className="num">{i + 1}</div>
                             </div>)
                         }
