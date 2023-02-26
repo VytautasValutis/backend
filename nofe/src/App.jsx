@@ -1,13 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.scss';
-import HW7003 from './Components/HW/HW7003';
-import HW7004 from './Components/HW/HW7004';
+import './Components/HW/HW8001.scss';
+import HW8001 from './Components/HW/HW8001';
 
 function App() {
 
   return (
-    <HW7004 txt1="Zebras" txt2="Bebras" col="red"/>
+    <HW8001 />
   );
 }
 
