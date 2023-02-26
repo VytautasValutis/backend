@@ -1,20 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.scss';
-
-
-const tekstas = (arg) => { 
-  return <h1> {arg} </h1> 
-}
+import HW7003 from './Components/HW/HW7003';
+import HW7002 from './Components/HW/HW7002';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        {tekstas("lorem  trampapm pam")}
-        {/* <p style={{color: 'red'}}>LABAS ZUIKI!</p> */}
-      </header>
-    </div>
+    <HW7003 arg="1" />
   );
 }
 
