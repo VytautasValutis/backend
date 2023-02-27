@@ -37,8 +37,8 @@
 
 .del-button {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 5px;
+  top: 5px;
   &::after {
     content: "\2620";
     display: block;
@@ -47,6 +47,22 @@
     font-size: 20px;
     border-radius: 50%;
     background-color: red;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+.ed-button {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  &::after {
+    content: "\2692";
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: darkcyan;
     color: #fff;
     cursor: pointer;
   }
