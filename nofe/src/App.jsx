@@ -1,55 +1,48 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import './App.scss';
-import Create from './Components/006/Create';
-import List from './Components/006/List';
-import create, { read, destroy } from './Functions/localStorage';
+import axios from 'axios';
 
-const KEY = 'wishList';
+
 
 function App() {
 
-  const [list, setList] = useState(null);
-  const [lastRefresh, setLastRefresh] = useState(Date.now());
-  const [createData, setCreateData] = useState(null);
-  const [deleteData, setDeleteData] = useState(null);
-
-  useEffect (() => {
-    // loadingo imitacija
-    setTimeout(() =>  setList(read(KEY)), 1000);
-  }, [lastRefresh]);
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    if (null === createData) {
-      return;
-    }
-    create(KEY, createData);
-  }, [createData]);
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        console.log(res.data);
+        // setUsers(res.data);
+        setUsers(res.data.map((u, i) => ({ ...u, row: i })));
+      });
+  }, []);
 
-  useEffect(() => {
-    if (null === deleteData) {
-      return;
-    }
-    // tipo kliento
-    setList(l => l.filter(d => deleteData.id !== d.id));
+  const sort = () => {
+    setUsers(u => [...u].sort((a, b) => a.name.localeCompare(b.name)));
+  }
 
-    // tipo serverio
-    destroy(KEY, deleteData.id);
-    setLastRefresh(Date.now);
-  }, [createData]);
+  const sortBack = () => {
+    setUsers(u => [...u].sort((a, b) => a.row - b.row));
+  }
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-4">
-          <Create setCreateData={setCreateData} />
-        </div>
-        <div className="col-8">
-          <List list={list} setDeleteData={setDeleteData}/>
-        </div>
-      </div>
+    <div className="App">
+      <header className="App-header">
+
+        <h1>Users List</h1>
+        <ul>
+          {
+            users?.map(u => <li key={u.id}>{u.name + " "}
+              <small style={{ fontSize: '50%' }}>{u.company.catchPhrase}</small>
+            </li>)
+          }
+        </ul>
+          <button className="btn btn-outline-primary m-4" onClick={sort}>Sort</button>
+          <button className="btn btn-outline-primary m-4" onClick={sortBack}>Sort Back</button>
+      </header>
     </div>
-  );
+  )
 }
 
 export default App;
