@@ -1,15 +1,33 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
-import './Components/HW/HW8004.scss';
-import './Components/HW/HW8005.scss';
-import HW8004 from './Components/HW/HW8004';
-import HW8005 from './Components/HW/HW8005';
+import Create from './Components/006/Create';
+import create from './Functions/localStorage';
+
+const KEY = 'wishList';
 
 function App() {
 
+  const [createData, setCreateData] = useState(null);
+
+  useEffect(() => {
+    if (null === createData) {
+      return;
+    }
+    create(KEY, createData);
+  }, [createData]);
+
   return (
-    <HW8005 />
+    <div className="container">
+      <div className="row">
+        <div className="col-4">
+          <Create />
+        </div>
+        <div className="col-8">
+          Column
+        </div>
+      </div>
+    </div>
   );
 }
 
